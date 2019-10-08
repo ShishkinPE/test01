@@ -1,5 +1,6 @@
 from graphics import *
 from math import *
+import fif.py as fif
 win= GraphWin("Food", 1000, 500)
 
 def sky():
@@ -78,41 +79,6 @@ def house(x,y,n,beta,c_wall,c_roof,window_is_on_the_left,c_window,c_door,c_chimn
         smoke2.draw(win)
         
 
-def sun(n,x,y,r,c_sun):
-    sun = Circle(Point(x, y), r)
-    sun.setFill(c_sun)
-    sun.setOutline(c_sun)
-    sun.draw(win)
-
-def luchiki(n,x,y,r,c_sun):
-    v=(5,5)
-    k=[1,1,1,1,1,1,1,1,1,1]
-    g=[1,1,1,1,1,1,1,1,1,1]
-    for i in range(n):
-        z = x + 100*(sin(2*i*pi/n))
-        d = y + 100*(cos(2*i*pi/n))
-        l = Line(Point(x, y), Point(z,d))
-        l.setWidth(4)
-        l.setFill(c_sun)
-        k[i] = l
-
-    for i in range(n):
-         z = x + 100 * (sin(2 * i * pi / n + pi/n))
-         d = y + 100 * (cos(2 * i * pi / n + pi/n))
-         l = Line(Point(x, y), Point(z, d))
-         l.setWidth(4)
-         l.setFill(c_sun)
-         g[i] = l
-
-    for i in range(n):
-        k[i].draw(win)
-    for i in range(n):
-        k[i].undraw()
-        g[i].draw(win)
-        time.sleep(0.01)
-    for i in range(n):
-        g[i].undraw()
-    time.sleep(0.001)
 
 
 
@@ -214,7 +180,7 @@ def check_coords(i):
         v_y[i] = -v_y[i]
     return(v_x[i],v_y[i])
 
-sun(10,100,150,50,'violet')
+fif.sun(10,100,150,50,'violet')
 while  True:
     for i in range(2):
         check_coords(i)
@@ -223,7 +189,7 @@ while  True:
         coords_x[i] += v_x[i]
         coords_y[i] += v_y[i]
     luchiki(10, 100, 150, 50, 'violet')
-    time.sleep(0.001)
+    time.sleep(0.0001)
 
 
 
